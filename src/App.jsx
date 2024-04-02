@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import './App.css'
 
-function App() {
+export function App() {
   const [count, setCount] = useState(0)
   const [color, setColor] = useState('yellow')
   return (
@@ -9,7 +9,7 @@ function App() {
       <h1>Ada School - React Hooks</h1>
 
       <div>
-        <span className={color}>{`Counter:${count}`}</span>
+        <span className={color}>{`Counter: ${count}`}</span>
       </div>
 
       <button>Increase</button>
@@ -19,4 +19,3 @@ function App() {
   )
 }
 
-export default App
