@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import { useState } from 'react'
 import { CountDownTimer } from './components/CountDownTimer'
 
 export function App() {
