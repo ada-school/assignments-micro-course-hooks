@@ -1,22 +1,24 @@
-import { useState } from 'react'
-import './App.css'
+import React, { useState } from 'react'
+import { CountDownTimer } from './components/CountDownTimer'
 
-function App() {
-  const [count, setCount] = useState(0)
-  const [color, setColor] = useState('yellow')
+export function App() {
+  const [showTimer, setShowTimer] = useState(false)
+
+  const handleFinish = () => {
+    setShowTimer((prev) => !prev)
+    alert('El temporizador ha finalizado!')
+  }
+
+  const handleUnmount = (data) => {
+    console.log(data.message)
+  }
+
   return (
     <>
-      <h1>Ada School - React Hooks</h1>
-
-      <div>
-        <span className={color}>{`Counter:${count}`}</span>
-      </div>
-
-      <button>Increase</button>
-      <button>Decrease</button>
-      <button>Reset</button>
+      <h1>Aplicación de Temporizador</h1>
+      <button onClick={() => setShowTimer((prev) => !prev)}>
+        empezar quiz
+      </button>
     </>
   )
 }
-
-export default App
