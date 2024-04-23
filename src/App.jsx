@@ -1,24 +1,36 @@
 import { useState } from 'react'
-import { CountDownTimer } from './components/CountDownTimer'
+import { MainControls } from './components/MainControls'
+import { SmartHome } from './components/SmartHome'
 
 export function App() {
-  const [showTimer, setShowTimer] = useState(false)
+	const [firstLightOn, setFirstLightOn] = useState(false)
+	const [secondLightOn, setSecondLightOn] = useState(false)
+	const [thirdLightOn, setThirdLightOn] = useState(true)
 
-  const handleFinish = () => {
-    setShowTimer((prev) => !prev)
-    alert('El temporizador ha finalizado!')
-  }
+	const handleAllOn = () => {
+		setFirstLightOn(true)
+		setSecondLightOn(true)
+		setThirdLightOn(true)
+	}
 
-  const handleUnmount = (data) => {
-    console.log(data.message)
-  }
+	const handleAllOff = () => {
+		setFirstLightOn(false)
+		setSecondLightOn(false)
+		setThirdLightOn(false)
+	}
 
-  return (
-    <>
-      <h1>Aplicación de Temporizador</h1>
-      <button onClick={() => setShowTimer((prev) => !prev)}>
-        empezar quiz
-      </button>
-    </>
-  )
+	return (
+		<div>
+			<MainControls onAllOnClick={handleAllOn} onAllOffClick={handleAllOff} />
+
+			<SmartHome
+				firstLightOn={firstLightOn}
+				secondLightOn={secondLightOn}
+				thirdLightOn={thirdLightOn}
+				onFirstToggle={() => setFirstLightOn(!firstLightOn)}
+				onSecondToggle={() => setSecondLightOn(!secondLightOn)}
+				onThirdToggle={() => setThirdLightOn(!thirdLightOn)}
+			/>
+		</div>
+	)
 }
