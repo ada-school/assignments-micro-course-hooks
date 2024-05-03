@@ -1,24 +1,25 @@
-import { useState } from 'react'
-import { CountDownTimer } from './components/CountDownTimer'
+import "./App.css";
 
-export function App() {
-  const [showTimer, setShowTimer] = useState(false)
-
-  const handleFinish = () => {
-    setShowTimer((prev) => !prev)
-    alert('El temporizador ha finalizado!')
-  }
-
-  const handleUnmount = (data) => {
-    console.log(data.message)
-  }
-
+function App() {
   return (
-    <>
-      <h1>Aplicación de Temporizador</h1>
-      <button onClick={() => setShowTimer((prev) => !prev)}>
-        empezar quiz
-      </button>
-    </>
-  )
+    <main className="container">
+      <header>
+        <h1>ADA Shopping</h1>
+      </header>
+      <section className="product">
+        <h2>Laptop</h2>
+        <h1>💻</h1>
+        <p>Precio (precio inicial)$</p>
+      </section>
+      <section className="offer">
+        <h2>Ofertar</h2>
+        <div>{/* Código para listar los botones con las ofertas */}</div>
+      </section>
+      <section className="result">
+        <p>{/* Ternario con el resultado del mensaje */}</p>
+      </section>
+    </main>
+  );
 }
+
+export { App };
