@@ -1,36 +1,23 @@
-import { useState } from 'react'
-import { MainControls } from './components/MainControls'
-import { SmartHome } from './components/SmartHome'
+import { generateCardPairs } from './utils/generateCardPairs'
 
-export function App() {
-	const [firstLightOn, setFirstLightOn] = useState(false)
-	const [secondLightOn, setSecondLightOn] = useState(false)
-	const [thirdLightOn, setThirdLightOn] = useState(true)
-
-	const handleAllOn = () => {
-		setFirstLightOn(true)
-		setSecondLightOn(true)
-		setThirdLightOn(true)
-	}
-
-	const handleAllOff = () => {
-		setFirstLightOn(false)
-		setSecondLightOn(false)
-		setThirdLightOn(false)
+export const App = () => {
+	const handleCardClick = (index) => {
+		console.log('Hola Adders!')
 	}
 
 	return (
-		<div>
-			<MainControls onAllOnClick={handleAllOn} onAllOffClick={handleAllOff} />
-
-			<SmartHome
-				firstLightOn={firstLightOn}
-				secondLightOn={secondLightOn}
-				thirdLightOn={thirdLightOn}
-				onFirstToggle={() => setFirstLightOn(!firstLightOn)}
-				onSecondToggle={() => setSecondLightOn(!secondLightOn)}
-				onThirdToggle={() => setThirdLightOn(!thirdLightOn)}
-			/>
+		<div className='container-cards'>
+			{cards.map((card, index) => (
+				<button
+					key={card.id}
+					className='card'
+					style={{
+						backgroundColor: card.flipped || card.matched ? 'white' : 'gray',
+					}}
+				>
+					{card.flipped || card.matched ? card.value : ''}
+				</button>
+			))}
 		</div>
 	)
 }
